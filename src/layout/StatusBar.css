@@ -47,6 +47,12 @@
 }
 
 @media (max-width: 700px) {
+  /* Écran trop étroit pour 3 colonnes égales : on répartit simplement l'espace */
+  .statusbar {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .statusbar__optional {
     display: none;
   }

@@ -10,6 +10,7 @@
   font-family: var(--mono);
   font-size: 0.85rem;
   font-weight: 700;
+  white-space: nowrap; /* le texte d'un bouton ne passe jamais à la ligne */
   transition: border-color 0.3s, color 0.3s, background 0.3s, transform 0.3s var(--ease);
 }
 

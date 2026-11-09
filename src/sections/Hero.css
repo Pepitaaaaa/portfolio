@@ -17,6 +17,7 @@
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 2 * var(--bar) - 2 * var(--gap));
+  max-width: none; /* pleine largeur : sinon le halo est coupé net sur les côtés */
   text-align: center;
   transition:
     --mouse-x 0.8s var(--ease),
@@ -111,13 +112,13 @@
 }
 
 /* =========================================================
-   5. Curseur de terminal qui clignote après "d'applications"
+   5. Curseur de terminal "_" qui clignote après "d'applications"
    ========================================================= */
 .hero__cursor {
   display: inline-block;
-  width: 0.08em;
-  height: 0.75em;
-  margin-left: 0.08em;
+  width: 0.45em;
+  height: 0.08em;
+  margin-left: 0.06em;
   background: var(--accent);
   /* invisible pendant 1,2 s (le temps que le titre arrive), puis clignote */
   animation: blink 1s steps(1) 1.2s infinite backwards;
