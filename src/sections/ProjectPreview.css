@@ -1,0 +1,237 @@
+/* =========================================================
+   Base commune à toutes les illustrations
+   ========================================================= */
+.preview {
+  min-height: 220px;
+  padding: 16px;
+  font-size: 0.7rem;
+}
+
+.preview__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.preview__row--start {
+  justify-content: flex-start;
+  gap: 6px;
+}
+
+.preview__muted {
+  color: var(--muted);
+}
+
+.preview__pill {
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.6rem;
+}
+
+.preview__pill.is-on {
+  background: var(--panel-3);
+}
+
+.preview__pill--accent {
+  border: none;
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.preview__tiles {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.preview__tiles span {
+  aspect-ratio: 3 / 4;
+  border-radius: 2px;
+}
+
+.preview__tiles--square {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.preview__tiles--square span {
+  aspect-ratio: 1;
+}
+
+/* =========================================================
+   Site (Les Improbables)
+   ========================================================= */
+.preview__banner {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+  padding: 32px 12px 12px;
+  border-radius: 2px;
+  background: #3b2f55;
+}
+
+.preview__banner strong {
+  font-size: 0.95rem;
+}
+
+.preview__banner span {
+  font-size: 0.55rem;
+}
+
+/* =========================================================
+   Terminal (Sylvac)
+   ========================================================= */
+.preview--terminal p {
+  line-height: 1.9;
+}
+
+/* =========================================================
+   Graphique (Angular + MQTT)
+   ========================================================= */
+.preview--chart {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 14px;
+  padding: 0;
+}
+
+.preview__side {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 12px;
+  border-right: 1px solid var(--border);
+}
+
+.preview__side span {
+  width: 80%;
+  height: 4px;
+  border-radius: 2px;
+  background: #2f2a3b;
+}
+
+.preview__side .is-on {
+  width: 100%;
+  background: var(--accent);
+}
+
+.preview__chart-main {
+  padding: 16px 16px 16px 0;
+}
+
+.preview__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.preview__stats div {
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.preview__stats small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.5rem;
+}
+
+.preview__svg {
+  width: 100%;
+  overflow: visible;
+}
+
+.preview__line {
+  fill: none;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  transition: stroke-dashoffset 2s var(--ease) 0.4s;
+}
+
+/* La courbe se dessine quand la carte devient visible */
+.reveal.is-visible .preview__line {
+  stroke-dashoffset: 0;
+}
+
+/* =========================================================
+   Cas d'utilisation (CESIZen)
+   ========================================================= */
+.preview--usecase {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.preview__actor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.preview__system {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid var(--border);
+}
+
+.preview__system span {
+  padding: 4px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  font-size: 0.6rem;
+  text-align: center;
+}
+
+/* =========================================================
+   Schéma de base de données ((RE)Sources Relationnelles)
+   ========================================================= */
+.preview--database {
+  position: relative;
+  min-height: 240px;
+}
+
+.preview__links {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.preview__links polyline {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 0.6;
+  vector-effect: non-scaling-stroke;
+}
+
+.preview__table {
+  position: absolute;
+  width: 30%;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: var(--panel);
+}
+
+.preview__table strong {
+  display: block;
+  padding: 4px 8px;
+  background: var(--panel-3);
+  font-size: 0.6rem;
+}
+
+.preview__table p {
+  padding: 6px 8px;
+  font-size: 0.55rem;
+  line-height: 1.4;
+}

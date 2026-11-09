@@ -1,0 +1,41 @@
+/* Toutes les valeurs de design du site. Changer une couleur ici la change partout.
+   Points de rupture utilisés dans les fichiers CSS : 900px (tablette) et 700px (mobile). */
+
+:root {
+  /* Couleurs */
+  --bg: #0b0a0f;
+  --bar-bg: rgba(11, 10, 15, 0.85);
+  --panel: #110f17;
+  --panel-2: #17141f;
+  --panel-3: #2a2438;
+  --image-bg: #1c1a1b;
+  --border: #25222e;
+  --text: #ece9f5;
+  --text-soft: #cfcadb;
+  --muted: #9c97ab;
+  --accent: #a78bfa;
+  --accent-soft: #cbbcff;
+  --yellow: #f5c451;
+  --green: #4ade80;
+
+  /* Typographie */
+  --font: 'Space Grotesk', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Dimensions du cadre */
+  --gap: 10px; /* marge autour du cadre */
+  --bar: 48px; /* hauteur des barres du haut et du bas */
+  --side: 56px; /* largeur de la barre de gauche */
+  --frame-radius: 12px;
+  --radius: 6px;
+
+  /* Courbe d'animation (départ rapide, arrivée douce) */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (max-width: 700px) {
+  :root {
+    --gap: 0px;
+    --frame-radius: 0px;
+  }
+}

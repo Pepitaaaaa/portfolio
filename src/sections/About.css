@@ -1,0 +1,84 @@
+.about__intro {
+  max-width: 860px;
+  margin: 0 auto 60px;
+}
+
+.about__intro-text {
+  font-size: 1.2rem;
+  line-height: 1.65;
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.about__column {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__column--left {
+  gap: 32px;
+  padding-top: 40px; /* décalage en escalier, comme sur la maquette */
+}
+
+.about__mono {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+/* Liste numérotée façon éditeur de code */
+.code-lines {
+  counter-reset: line;
+  font-family: var(--mono);
+  font-weight: 700;
+  line-height: 1.9;
+}
+
+.code-lines li {
+  counter-increment: line;
+}
+
+.code-lines li::before {
+  content: counter(line);
+  display: inline-block;
+  width: 24px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.code-lines a {
+  transition: color 0.2s;
+}
+
+.code-lines a:hover {
+  color: var(--accent);
+}
+
+.about__coffee {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px -20px -20px; /* colle aux bords de la fenêtre */
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about__column--left {
+    padding-top: 0;
+  }
+}

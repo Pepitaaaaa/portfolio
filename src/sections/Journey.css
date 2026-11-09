@@ -1,0 +1,69 @@
+.journey__grid {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
+  align-items: start;
+  gap: 32px;
+}
+
+/* --- git log --- */
+.journey__log li {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+.journey__log li:first-child {
+  padding-top: 0;
+}
+
+.journey__log strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.95rem;
+}
+
+.journey__log p {
+  color: var(--text-soft);
+  font-size: 0.8rem;
+}
+
+.journey__date {
+  color: var(--accent);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+/* --- stack --- */
+.journey__stack li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+.journey__stack li:first-child {
+  padding-top: 0;
+}
+
+.journey__stack p {
+  margin-top: 6px;
+  font-weight: 700;
+  white-space: pre; /* garde les doubles espaces entre les technos */
+}
+
+@media (max-width: 900px) {
+  .journey__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .journey__log li {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}

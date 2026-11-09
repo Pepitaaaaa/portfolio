@@ -1,0 +1,58 @@
+/* Le cadre arrondi autour de tout l'écran */
+.frame::before {
+  content: '';
+  position: fixed;
+  inset: var(--gap);
+  z-index: 50;
+  border: 1px solid var(--border);
+  border-radius: var(--frame-radius);
+  pointer-events: none;
+}
+
+/* Le contenu laisse la place aux barres fixes (haut, gauche, bas) */
+.main {
+  padding:
+    calc(var(--gap) + var(--bar))
+    var(--gap)
+    calc(var(--gap) + var(--bar))
+    calc(var(--gap) + var(--side));
+}
+
+/* Une section de la page */
+.section {
+  position: relative;
+  overflow: hidden; /* évite que le grand mot de fond crée un scroll horizontal */
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 140px 32px;
+  /* Quand on clique sur un onglet, la section s'arrête sous la barre du haut
+     (sinon il reste un espace vide qu'on peut encore remonter à la molette). */
+  scroll-margin-top: calc(var(--gap) + var(--bar));
+}
+
+/* Éléments décoratifs (grand mot, halo, trait...) : en fond, non cliquables */
+.decor {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Tout le vrai contenu passe au-dessus des décors */
+.section > :not(.decor) {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 700px) {
+  .frame::before {
+    display: none;
+  }
+
+  .main {
+    padding-left: 0;
+  }
+
+  .section {
+    padding: 100px 16px;
+  }
+}

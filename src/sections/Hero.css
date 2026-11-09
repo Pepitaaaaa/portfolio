@@ -1,0 +1,162 @@
+/* Position de la souris, déclarée comme une vraie longueur
+   pour que le halo puisse glisser en douceur (transition) au lieu de sauter. */
+@property --mouse-x {
+  syntax: '<length-percentage>';
+  inherits: true;
+  initial-value: 50%;
+}
+
+@property --mouse-y {
+  syntax: '<length-percentage>';
+  inherits: true;
+  initial-value: 40%;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 2 * var(--bar) - 2 * var(--gap));
+  text-align: center;
+  transition:
+    --mouse-x 0.8s var(--ease),
+    --mouse-y 0.8s var(--ease);
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* --exit (0 → 1) vient du hook useScrollExit : le contenu monte, rétrécit et s'efface */
+  transform: translateY(calc(var(--exit, 0) * -120px)) scale(calc(1 - var(--exit, 0) * 0.08));
+  opacity: calc(1 - var(--exit, 0) * 1.2);
+}
+
+/* =========================================================
+   1. Halo violet qui suit la souris
+   ========================================================= */
+.hero__glow {
+  inset: 0;
+  background: radial-gradient(
+    500px circle at var(--mouse-x) var(--mouse-y),
+    rgba(124, 92, 224, 0.2),
+    transparent 70%
+  );
+  animation: fade-up 2s var(--ease) both;
+}
+
+/* =========================================================
+   2. Grand mot "dev" : apparaît flou et écarté, puis se resserre
+   ========================================================= */
+.hero .big-word {
+  top: 50%;
+  margin-top: -0.5em;
+  animation: big-word-in 2.2s var(--ease) both;
+}
+
+@keyframes big-word-in {
+  from {
+    opacity: 0;
+    filter: blur(16px);
+    letter-spacing: 0.2em;
+  }
+}
+
+/* =========================================================
+   3. Sur-titre "ACCUEIL" : les lettres se rapprochent
+   ========================================================= */
+.hero__eyebrow {
+  animation: eyebrow-in 1.4s var(--ease) both;
+}
+
+@keyframes eyebrow-in {
+  from {
+    opacity: 0;
+    letter-spacing: 0.8em;
+  }
+}
+
+/* =========================================================
+   4. Titre : chaque mot monte depuis son propre masque
+   ========================================================= */
+.hero__title {
+  margin-bottom: 32px;
+  font-size: clamp(2.8rem, 7.5vw, 6.2rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.hero__line {
+  display: block;
+}
+
+/* Le masque : il cache ce qui dépasse, le mot monte depuis le bas */
+.hero__word {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  vertical-align: top;
+}
+
+/* Espace entre deux mots */
+.hero__word + .hero__word {
+  margin-left: 0.25em;
+}
+
+.hero__word > span {
+  display: inline-block;
+  transform: translateY(110%) rotate(6deg);
+  animation: line-up 1.1s var(--ease) forwards;
+}
+
+/* =========================================================
+   5. Curseur de terminal qui clignote après "d'applications"
+   ========================================================= */
+.hero__cursor {
+  display: inline-block;
+  width: 0.08em;
+  height: 0.75em;
+  margin-left: 0.08em;
+  background: var(--accent);
+  /* invisible pendant 1,2 s (le temps que le titre arrive), puis clignote */
+  animation: blink 1s steps(1) 1.2s infinite backwards;
+}
+
+@keyframes blink {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* =========================================================
+   6. Texte et boutons
+   ========================================================= */
+.hero__text {
+  max-width: 600px;
+  margin-bottom: 32px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* Les boutons arrivent l'un après l'autre.
+   "backwards" (et pas "forwards") : une fois l'animation finie,
+   le bouton retrouve son style normal et son effet au survol fonctionne. */
+.hero__buttons > * {
+  animation: fade-up 0.8s var(--ease) backwards;
+}
+
+.hero__buttons > :nth-child(1) { animation-delay: 850ms; }
+.hero__buttons > :nth-child(2) { animation-delay: 950ms; }
+.hero__buttons > :nth-child(3) { animation-delay: 1050ms; }
+
+/* Petite ligne verticale qui invite à scroller */
+.hero__scroll-hint {
+  bottom: 40px;
+  left: 50%;
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(var(--accent), transparent);
+  animation: scroll-hint 2s var(--ease) infinite;
+}

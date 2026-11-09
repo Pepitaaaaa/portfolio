@@ -1,0 +1,58 @@
+/* Toutes les animations @keyframes du site sont ici. */
+
+/* Apparition en fondu au chargement (hero) */
+.fade-in {
+  opacity: 0;
+  animation: fade-up 1s var(--ease) forwards;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Lignes du titre qui montent depuis un masque (Hero.css) */
+@keyframes line-up {
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Trait vertical "scrollez" qui se dessine puis s'efface (Hero.css) */
+@keyframes scroll-hint {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* =========================================================
+   Accessibilité : si la personne a demandé "réduire les animations"
+   dans son système, on coupe tout et on affiche directement le contenu.
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .fade-in,
+  .reveal,
+  .hero__word > span,
+  .hero__content {
+    opacity: 1;
+    transform: none;
+  }
+}

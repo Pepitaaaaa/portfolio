@@ -1,0 +1,88 @@
+/* =========================================================
+   Remise à zéro
+   ========================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 30% 15%, rgba(124, 92, 224, 0.18), transparent 70%),
+    radial-gradient(ellipse 40% 50% at 0% 60%, rgba(124, 92, 224, 0.12), transparent 70%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   Classes utilitaires (réutilisées partout)
+   ========================================================= */
+.accent { color: var(--accent); }
+.yellow { color: var(--yellow); }
+.green { color: var(--green); }
+
+/* Petit sur-titre en majuscules espacées : "ACCUEIL", "TRAVAIL"... */
+.eyebrow {
+  margin-bottom: 24px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Rangée de boutons */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.button-row--left {
+  justify-content: flex-start;
+}

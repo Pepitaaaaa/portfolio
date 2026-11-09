@@ -1,0 +1,68 @@
+.sidebar {
+  position: fixed;
+  top: calc(var(--gap) + var(--bar));
+  bottom: calc(var(--gap) + var(--bar));
+  left: var(--gap);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  width: var(--side);
+  border-right: 1px solid var(--border);
+  background: rgba(11, 10, 15, 0.6);
+}
+
+/* Icônes des sections : centrées verticalement dans la barre */
+.sidebar__nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Réseaux sociaux : collés en bas */
+.sidebar__socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+}
+
+.sidebar__link {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  color: var(--muted);
+  transition: color 0.3s;
+}
+
+.sidebar__link:hover,
+.sidebar__link.is-active {
+  color: var(--accent);
+}
+
+/* Petit trait violet collé au bord gauche, à côté de l'icône active */
+.sidebar__link::before {
+  content: '';
+  position: absolute;
+  left: calc((38px - var(--side)) / 2);
+  width: 2px;
+  height: 0;
+  background: var(--accent);
+  transition: height 0.3s var(--ease);
+}
+
+.sidebar__link.is-active::before {
+  height: 22px;
+}
+
+@media (max-width: 700px) {
+  .sidebar {
+    display: none;
+  }
+}
